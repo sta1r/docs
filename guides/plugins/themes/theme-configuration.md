@@ -36,7 +36,11 @@ The theme configuration for a theme is located in the `theme.json` file `<plugin
   "asset": [
     "@Storefront",
     "app/storefront/src/assets"
-  ]
+  ],
+  "configInheritance": [
+    "@Storefront",
+    "@OtherTheme"
+    ]
 }
 ```
 {% endcode %}
@@ -556,6 +560,32 @@ You can extend the config to add translated labels for the tabs, blocks and sect
 }
 ```
 {% endcode %}
+
+
+## Config inheritance
+
+The `configInheritance` option let you configure additional themes from which your theme will inherit its fields 
+configuration. Every theme always inherit the fields from the `Storefront` standard theme. With this option you can 
+add additional other themes. For example, you can have a basic theme for your coporate design and special themes for 
+different saleschannels with specific changes only needed for a single saleschannel.  
+
+{% code title="<plugin root>/src/Resources/theme.json" %}
+```javascript
+{
+  ...
+  "configInheritance": [
+     "@Storefront", 
+     "@BasicTheme"
+   ]
+  ...
+}
+```
+{% endcode %}
+
+In this example the `BasicTheme` is a theme that adds all the configurations you need for your corporate design. 
+This configurations will be inherited in your new theme which can add or change some configurations only needed in a 
+special saleschannel or for a special time. See [Theme inheritance](../plugins/themes/add-theme-inheritance.md) 
+for a more detailed example.  
 
 ## Next steps
 

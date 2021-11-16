@@ -2,7 +2,8 @@
 
 ## Overview
 
-This guide explains how you can extend an existing theme. What are uses cases to inherit from another theme? Maybe you already use a specific theme for a sales channel and you want to use it in another sales channel for a different project with slight changes.
+This guide explains how you can extend an existing theme. What are use cases to inherit from another theme? Maybe 
+you already use a specific theme for a sales channel and you want to use it in another sales channel for a different project with slight changes.
 
 For example, imagine you want to use a dark version of the theme, so you have different looks for different sales channels. Or maybe you own a store-bought theme and only need to change the appearance of it without changing the code of the theme itself. Sometimes it could be useful to develop some kind of base theme and customize it for different clients.
 
@@ -79,7 +80,11 @@ Here is an example:
     "@Storefront",
     "@SwagBasicExampleTheme",
     "app/storefront/src/assets"
-  ]
+  ],
+  "configInheritance": [
+    "@Storefront",
+    "@SwagBasicExampleTheme"
+]
 }
 ```
 {% endcode %}
@@ -92,7 +97,14 @@ The same applies to the JavaScript `script` section. The javascript of the store
 
 The `style` section behaves similarly to the others. The only difference here is the `override.css` can affect SCSS variables e.g. `$border-radius`. That's why it's at the top of the list. To find out more about overriding variables check out the [Override Bootstrap variables in a theme](override-bootstrap-variables-in-a-theme.md) guide.
 
-Finally, the `asset` section. If you want to use assets from the `@SwagBasicExampleTheme` you have add it to the list here as well.
+The `asset` section. If you want to use assets from the `@SwagBasicExampleTheme` you have add it to the list here as 
+well.
+
+Finally, the `configInheritance` section will use the field configuration from the given themes and defines the last 
+of the themes as the parent theme. The configuration values are inherited from the themes mentioned in 
+`configInheritance`. The Storefront theme configuration will always be inherited, even if no `configInheritance` is 
+given. See [Theme inheritance](../plugins/themes/theme-inheritance-configuration.md)
+for a more detailed example.
 
 ## Next steps
 
